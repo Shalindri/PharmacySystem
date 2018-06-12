@@ -5,11 +5,11 @@ var Controller = function() {
   this.addDrug = function(data) {
     return new Promise(function(resolve, reject) {
       var Drug = new drugSchema({
-        Id: data.Id,
         Brand_name: data.Brand_name,
         Generic_name: data.Generic_name,
         Dosage: data.Dosage,
         Category: data.Category,
+        Type: data.Type,
         Unit_price: data.Unit_price,
         Selling_price: data.Selling_price,
         Danger_level: data.Danger_level,

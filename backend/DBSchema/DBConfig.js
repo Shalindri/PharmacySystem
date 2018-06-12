@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 var schema = mongoose.Schema;
 
 var Drug = new schema({
-  Id: {
-    type: String,
-    required: true
-  },
+  //Id: {
+  //type: String,
+  // required: true
+  //},
   Brand_name: {
     type: String,
     required: true
@@ -18,8 +18,11 @@ var Drug = new schema({
     type: String,
     required: true
   },
-
   Category: {
+    type: String,
+    required: true
+  },
+  Type: {
     type: String,
     required: true
   },
