@@ -161,6 +161,26 @@ var Issue_data = new schema({
   }
 });
 
+var Payment_data = new schema({
+  BillNo: {
+    type: String,
+    required: true
+  },
+  Pres_Id:{
+    type: String,
+    required: true
+  },
+  PayDate:{
+    type: String,
+    required: true
+  },
+  Total:{
+    type: String,
+    required: true
+  }
+});
+
+
 mongoose.model("drugs", Drug);
 mongoose.model("batch", Batch);
 mongoose.model("order", Order);
@@ -169,6 +189,7 @@ mongoose.model("duty", Employee_duty);
 mongoose.model("emp_salary", Employee_salary);
 mongoose.model("pres_data", Prescription_data);
 mongoose.model("issue_data", Issue_data);
+mongoose.model("payment_data",Payment_data)
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/pharmacy",
