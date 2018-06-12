@@ -3,11 +3,39 @@ var schema = mongoose.Schema;
 
 var Drug = new schema({
   Id: {
-    type: String,
-    required: true
+    type: String
   },
   Brand_name: {
     type: String,
+    required: true
+  },
+  Generic_name: {
+    type: String,
+    required: true
+  },
+  Dosage: {
+    type: String,
+    required: true
+  },
+
+  Category: {
+    type: String,
+    required: true
+  },
+  Unit_price: {
+    type: Number,
+    required: true
+  },
+  Selling_price: {
+    type: Number,
+    required: true
+  },
+  Danger_Level: {
+    type: Number,
+    required: true
+  },
+  Reorder_Level: {
+    type: Number,
     required: true
   },
   Supplier: {
@@ -161,7 +189,7 @@ var Issue_data = new schema({
   }
 });
 
-mongoose.model("drugs", Drug);
+mongoose.model("drug", Drug);
 mongoose.model("batch", Batch);
 mongoose.model("order", Order);
 mongoose.model("employee", Employee);
