@@ -3,7 +3,8 @@ var schema = mongoose.Schema;
 
 var Drug = new schema({
   Id: {
-    type: String
+    type: String,
+    required: true
   },
   Brand_name: {
     type: String,
@@ -30,11 +31,11 @@ var Drug = new schema({
     type: Number,
     required: true
   },
-  Danger_Level: {
+  Danger_level: {
     type: Number,
     required: true
   },
-  Reorder_Level: {
+  Reorder_level: {
     type: Number,
     required: true
   },

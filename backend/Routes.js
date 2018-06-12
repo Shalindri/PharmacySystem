@@ -1,7 +1,7 @@
 const express = require("express");
 var routes = express.Router();
 
-var drugRoutes = require("./Routers/Drug.Route");
+var drugRoutes = require("./Routes/Drug.Route");
 //var empRoutes = require("./Routers/Emp.Route");
 //var issueRoutes = require("./Routers/Issue.Route");
 //var paymentRoutes = require("./Routers/Payment.Route");
