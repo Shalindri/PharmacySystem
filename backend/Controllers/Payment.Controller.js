@@ -1,6 +1,7 @@
 var mongoose = require("../DBSchema/DBConfig");
 var PaymentSchema = mongoose.model('payment_data');
 
+
 var Controller = function(){
 
     this.addPayment = function(data){
@@ -31,6 +32,7 @@ var Controller = function(){
         })
     }
 
+    
 }
 
 module.exports=new Controller();
