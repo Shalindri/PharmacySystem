@@ -1,28 +1,253 @@
-.App {
-  text-align: center;
+img {
+  width: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.landing {
+  position: relative;
+  background: url("./img/GettyImages-53463956-800x533.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin-top: -24px;
+  margin-bottom: -50px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.landing-inner {
+  padding-top: 80px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.dark-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.App-intro {
-  font-size: large;
+.card-form {
+  opacity: 0.9;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.latest-profiles-img {
+  width: 40px;
+  height: 40px;
+}
+
+.form-control::placeholder {
+  color: #bbb !important;
+}
+
+.sidebar {
+  width: 180px;
+
+  height: 100%;
+
+  position: fixed;
+
+  background: #394a59;
+}
+
+.nav-collapse.collapse {
+  display: inline;
+}
+
+/*sidebar navigation*/
+
+.sidebar {
+  width: 180px;
+
+  height: 100%;
+
+  position: fixed;
+
+  background: #394a59;
+}
+
+.nav-collapse.collapse {
+  display: inline;
+}
+
+.sidebar-menu,
+ul.sidebar-menu li ul.sub {
+  margin: -2px 0 0;
+
+  padding: 0;
+}
+
+.sidebar-menu {
+  margin-top: 60px;
+}
+
+.sidebar > ul > li > ul.sub {
+  display: none;
+}
+
+.sidebar > ul > li.active > ul.sub,
+#sidebar > ul > li > ul.sub > li > a {
+  display: block;
+}
+
+.sidebar-menu {
+  margin-top: 60px;
+}
+
+.sidebar-menu li ul.sub li {
+  background: #394a59;
+
+  margin-bottom: 0;
+
+  margin-left: 0;
+
+  margin-right: 0;
+}
+
+.sidebar-menu li ul.sub li:last-child {
+  border-radius: 0 0 4px 4px;
+
+  -webkit-border-radius: 0 0 4px 4px;
+}
+
+.sidebar-menu li ul.sub li a {
+  font-size: 12px;
+
+  padding: 0 0 0 32px;
+
+  line-height: 35px;
+
+  height: 35px;
+
+  -webkit-transition: all 0.3s ease;
+
+  -moz-transition: all 0.3s ease;
+
+  -o-transition: all 0.3s ease;
+
+  -ms-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
+
+  color: #d0d8df;
+
+  font-size: 14px;
+}
+
+.sidebar-menu li ul.sub li a:hover,
+.sidebar-menu li ul.sub li.active a {
+  color: #fff;
+
+  -webkit-transition: all 0.3s ease;
+
+  -moz-transition: all 0.3s ease;
+
+  -o-transition: all 0.3s ease;
+
+  -ms-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
+
+  display: block;
+}
+
+.sidebar-menu li {
+  line-height: 20px !important;
+}
+
+.sidebar-menu li.sub-menu {
+  line-height: 15px;
+
+  font-size: 16px;
+}
+
+.sidebar-menu li a span {
+  display: inline-block;
+}
+
+.sidebar-menu li a {
+  color: #d0d8df;
+
+  text-decoration: none;
+
+  display: block;
+
+  padding: 15px 0 15px 10px;
+
+  font-size: 16px;
+
+  font-weight: 300;
+
+  outline: none;
+
+  -webkit-transition: all 0.3s ease;
+
+  -moz-transition: all 0.3s ease;
+
+  -o-transition: all 0.3s ease;
+
+  -ms-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
+
+  border-right: 1px solid #d7d7d7;
+
+  border-bottom: 1px solid #d7d7d7;
+}
+
+/*ul.sidebar-menu li a i{
+
+  position: relative;
+
+  top: 2px;
+
+}*/
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover,
+.sidebar-menu li a:focus {
+  background: #2e3b46;
+
+  color: #fff;
+
+  display: block;
+
+  /*border-radius: 4px;
+
+  -webkit-border-radius: 4px;*/
+
+  -webkit-transition: all 0.3s ease;
+
+  -moz-transition: all 0.3s ease;
+
+  -o-transition: all 0.3s ease;
+
+  -ms-transition: all 0.3s ease;
+
+  transition: all 0.3s ease;
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a:focus {
+  border-bottom: 1px solid #d0d8df;
+}
+
+/*ul.sidebar-menu li.active a,*/
+.sidebar-menu .sub-menu li.active a {
+  border-bottom: 1px solid #d0d8df;
+}
+
+.sidebar-menu li a i {
+  font-size: 18px;
+
+  padding-right: 6px;
+
+  /*color: #688a7e;*/
+}
+
+.sidebar-menu li a:hover i,
+.sidebar-menu li a:focus i {
+  color: #fff;
+}
+
+.sidebar-menu li.active a i {
+  color: #fff;
 }
