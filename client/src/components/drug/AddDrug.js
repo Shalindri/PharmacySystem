@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import TextFieldGroup from "../common/TextFieldGroup";
-import SelectListGroup from "../common/SelectListGroup";
+import FormatedTextField from "../common/FormatedTextField";
+import FormatedList from "../common/FormatedList";
 import axios from "axios";
 
 class addDrug extends Component {
@@ -42,7 +42,7 @@ class addDrug extends Component {
     // Add drug
 
     axios
-      .post("http://localhost:8080/drug", drugData)
+      .post("http://localhost:8080/drug/drugs", drugData)
       .then(res => {
         console.log(drugData);
         this.setState({
@@ -100,28 +100,28 @@ class addDrug extends Component {
               <h1 className="display-4 text-left">Add Drug</h1>
 
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <FormatedTextField
                   info="Brand Name"
                   placeholder="Brand Name"
                   name="brandName"
                   value={this.state.brandName}
                   onChange={this.onChange}
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Generic Name"
                   name="genericName"
                   value={this.state.genericName}
                   onChange={this.onChange}
                   info="Generic Name"
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Dosage"
                   name="dosage"
                   value={this.state.dosage}
                   onChange={this.onChange}
                   info="Dosage"
                 />
-                <SelectListGroup
+                <FormatedList
                   placeholder="Category"
                   name="category"
                   value={this.state.category}
@@ -129,7 +129,7 @@ class addDrug extends Component {
                   options={options}
                   info="Drug Category"
                 />
-                <SelectListGroup
+                <FormatedList
                   placeholder="Type"
                   name="type"
                   value={this.state.type}
@@ -138,35 +138,35 @@ class addDrug extends Component {
                   info="Drug Type"
                 />
 
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Unit price"
                   name="unitPrice"
                   value={this.state.unitPrice}
                   onChange={this.onChange}
                   info="Unit Price"
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Selling price"
                   name="sellingPrice"
                   value={this.state.sellingPrice}
                   onChange={this.onChange}
                   info="Selling Price"
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Danger Level"
                   name="dangerLevel"
                   value={this.state.dangerLevel}
                   onChange={this.onChange}
                   info="Danger Level"
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Reorder Level"
                   name="reorderLevel"
                   value={this.state.reorderLevel}
                   onChange={this.onChange}
                   info="Reorder Level"
                 />
-                <TextFieldGroup
+                <FormatedTextField
                   placeholder="Supplier"
                   name="supplier"
                   value={this.state.supplier}

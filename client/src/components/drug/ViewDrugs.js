@@ -14,7 +14,7 @@ class ViewDrugs extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:8080/drug")
+      .get("http://localhost:8080/drug/drugs")
       .then(Response => {
         var data = Response.data.data;
         this.setState({

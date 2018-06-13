@@ -49,19 +49,39 @@ var Drug = new schema({
 });
 
 var Batch = new schema({
-  Drug: {
+  Brand_name: {
+    type: String,
+    required: true
+  },
+  Batch_number: {
+    type: String,
+    required: true
+  },
+  Batch_type: {
+    type: String,
+    required: true
+  },
+  Content: {
+    type: String,
+    required: true
+  },
+  No_packages: {
+    type: Number,
+    required: true
+  },
+  No_items: {
+    type: Number,
+    required: true
+  },
+  Qty: {
+    type: Number,
+    required: true
+  },
+  Mfg: {
     type: String,
     required: true
   },
   Exp: {
-    type: String,
-    required: true
-  },
-  Md: {
-    type: String,
-    required: true
-  },
-  Qty: {
     type: String,
     required: true
   }

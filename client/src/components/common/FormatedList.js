@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const SelectListGroup = ({ name, value, info, onChange, options }) => {
+const FormatedList = ({ name, value, info, onChange, options }) => {
   const selectOptions = options.map(option => (
     <option key={option.label} value={option.value}>
       {option.label}
@@ -23,7 +23,7 @@ const SelectListGroup = ({ name, value, info, onChange, options }) => {
   );
 };
 
-SelectListGroup.propTypes = {
+FormatedList.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   info: PropTypes.string,
@@ -32,4 +32,4 @@ SelectListGroup.propTypes = {
   options: PropTypes.array.isRequired
 };
 
-export default SelectListGroup;
+export default FormatedList;
