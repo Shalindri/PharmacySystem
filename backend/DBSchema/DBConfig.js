@@ -44,7 +44,7 @@ var Order = new schema({
     type: String,
     required: true
   },
-  Quanity: {
+  Quantity: {
     type: String,
     required: true
   },
