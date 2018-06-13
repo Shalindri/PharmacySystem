@@ -13,4 +13,14 @@ router.post("/", function(req, res) {
     });
 });
 
+router.get("/", function(req, res) {
+  Controller.getDrugs()
+    .then(function(data) {
+      res.status(data.status).send({ data: data.Drugdata });
+    })
+    .catch(function(err) {
+      res.status(data.status).send({ message: err.message });
+    });
+});
+
 module.exports = router;

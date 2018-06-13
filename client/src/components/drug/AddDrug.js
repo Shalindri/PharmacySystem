@@ -45,6 +45,18 @@ class addDrug extends Component {
       .post("http://localhost:8080/drug", drugData)
       .then(res => {
         console.log(drugData);
+        this.setState({
+          brandName: "",
+          genericName: "",
+          dosage: "",
+          category: "",
+          type: "",
+          unitPrice: "",
+          sellingPrice: "",
+          dangerLevel: "",
+          reorderLevel: "",
+          supplier: ""
+        });
       })
       .catch(err => {
         console.log(err);
@@ -85,7 +97,7 @@ class addDrug extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Add Drug</h1>
+              <h1 className="display-4 text-left">Add Drug</h1>
 
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -166,7 +178,7 @@ class addDrug extends Component {
                   type="submit"
                   value="Submit"
                   className="btn btn-info btn-block mt-4"
-                  onClick={this.addDrug}
+                  //onClick={this.onSubmit}
                 />
               </form>
             </div>

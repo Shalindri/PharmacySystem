@@ -26,6 +26,20 @@ var Controller = function() {
         });
     });
   };
+
+  this.getDrugs = function() {
+    return new Promise(function(resolve, reject) {
+      drugSchema
+        .find()
+        .exec()
+        .then(function(data) {
+          resolve({ status: 200, Drugdata: data });
+        })
+        .catch(function(err) {
+          reject({ status: 404, message: "No Drug data" });
+        });
+    });
+  };
 };
 
 module.exports = new Controller();
