@@ -1,22 +1,26 @@
 var Express = require('express');
 var router = Express.Router();
-var drugController = require("../Controllers/Drug.Controller");
-
-router.post('/', function(req,res){
-    drugController.addOrder(req.body).then(function(data){
-        res.status(data.status).send({message: data.message});
-    }).catch(function(err){
-        res.status(data.status).send({message:err.message});
-    })
-})
+var Controller = require("../Controllers/Drug.Controller");
 
 
-router.get('/',function(req,res){
-    drugController.getAll().then(function(data){
-        res.status(data.status).send({data:data.orderData});
-    }).catch(function(err){
-        res.status(data.status).send({message:err.message});
-    })
-})
+router.post("/batch", function(req, res) {
+    Controller.addBatch(req.body)
+      .then(function(data) {
+        res.status(data.status).send({ message: data.message });
+      })
+      .catch(function(err) {
+        res.status(err.status).send({ message: err.message });
+      });
+  });
+  
+  router.get("/batch", function(req, res) {
+    Controller.getBatch()
+      .then(function(data) {
+        res.status(data.status).send({ data: data.Batchdata });
+      })
+      .catch(function(err) {
+        res.status(data.status).send({ message: err.message });
+      });
+  });
 
 module.exports=router;

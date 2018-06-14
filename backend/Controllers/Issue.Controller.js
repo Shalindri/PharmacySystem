@@ -7,10 +7,10 @@ var Controller = function(){
         return new Promise (function(resolve,reject){
             var issue = new IssuedSchema({
                 Pres_Id: data.Pres_Id,
-                Drug_name: data.Drug_name,
-                Issue_Date: data.Issue_Date,
-                Quantity: data.Quantity,
-                unit_price: data.unit_price
+                Drug_name1: data.Drug_name,
+                Drug_name2: data.Issue_Date,
+                Quantity1: data.Quantity,
+                Quantity2: data.unit_price
             });
 
             issue.save().then(function(){
