@@ -1,6 +1,7 @@
 
 import React, { Component } from "react";
 
+
 import axios from "axios";
 
 class AddPayment extends Component {
@@ -10,13 +11,26 @@ class AddPayment extends Component {
         BillNo: "",
         Pres_Id:"",
         PayDate:"",
-        Total:""
+        Total:"",
+        tot1:"",
+        tot2:"",
+        orderdata:[{
+          "Pres_Id":"1",
+          "Drug_name1":"panadol",
+          "Drug_name2":"piriton",
+          "Quantity1":"9",
+          "Quantity2":"3",
+          "Price1":"2",
+          "Price2":"1"
+
+        }]
+
      
     };
     
 
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    //this.onChange = this.onChange.bind(this);
+    //this.onSubmit = this.onSubmit.bind(this);
     
   }
 
@@ -24,13 +38,15 @@ class AddPayment extends Component {
     e.preventDefault();
 
     const batchData = {
-        BillNo: this.state.BillNo,
+       BillNo: this.state.BillNo,
         Pres_Id: this.state.Pres_Id,
         PayDate: this.state.PayDate,
-        Total: this.state.Total
+        Total: this.state.Total,
       
+       
+
     };
-    // Add payment
+    
 
     axios
       .post("http://localhost:8080/drug/batch", batchData)
@@ -38,6 +54,7 @@ class AddPayment extends Component {
         console.log(batchData);
 
         this.setState({
+
          
         });
       })
@@ -47,6 +64,10 @@ class AddPayment extends Component {
   }
 
   onChange(e) {
+    
+  }
+
+  search(e) {
     
   }
   
@@ -60,7 +81,7 @@ class AddPayment extends Component {
       .then(Response => {
         var data = Response.data.data;
         this.setState({
-          drugData: data
+          orderData: data
         });
         console.log(data);
       })
@@ -70,6 +91,30 @@ class AddPayment extends Component {
   }
 
   render() {
+    const a = this.state.orderdata.map(x=>{
+     var tot1=(x.Price1)*(x.Quantity1);
+     var tot2=(x.Price2)*(x.Quantity2);
+      return(
+        <tbody>
+        <tr>
+  
+        <td>{x.Drug_name1}</td>
+        <td>{x.Quantity1}</td>
+        <td>{x.Price1}</td>
+        <td value={tot1}>{tot1}</td>
+        
+        </tr>
+        <tr>
+  
+        <td>{x.Drug_name2}</td>
+        <td>{x.Quantity2}</td>
+        <td>{x.Price2}</td>
+        <td value={tot2}>{tot2}</td>
+        
+        </tr>
+        </tbody>
+    )
+    });
     
     
     return (
@@ -85,7 +130,7 @@ class AddPayment extends Component {
                     <label for="exampleInputEmail1">Prescription No: </label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary"onClick={this.search()}>Search</button>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Bill No: </label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
@@ -116,21 +161,9 @@ class AddPayment extends Component {
                         <th scope="col">Total</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="table-active">
-                        <th scope="row">Active</th>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        </tr>
-                        <tr>
-                        <th scope="row">Default</th>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        <td>Column content</td>
-                        </tr>
-                        
-                    </tbody>
+                    
+                       {a}
+                    
                     </table> 
                 </div>
 
