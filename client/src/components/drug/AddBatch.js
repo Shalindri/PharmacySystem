@@ -19,18 +19,21 @@ class AddBatch extends Component {
       noOfPackages: "",
       noOfItems: "",
       qty: "",
-      mfg: "",
-      exp: "",
-      drugData: [],
-      startDate: moment()
+      mfg: moment(),
+      exp: moment(),
+      drugData: []
     };
-    this.handleChange = this.handleChange.bind(this);
-    };
+    this.handleMfg = this.handleMfg.bind(this);
+    this.handleExp = this.handleExp.bind(this);
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+
+    this.onChangeSpinnerItem = this.onChangeSpinnerItem.bind(this);
+    this.onChangeSpinnerPack = this.onChangeSpinnerPack.bind(this);
+
     this.calTot = this.calTot.bind(this);
-  
+  }
 
   onSubmit(e) {
     e.preventDefault();
@@ -39,7 +42,7 @@ class AddBatch extends Component {
       Brand_name: this.state.brandName,
       Batch_number: this.state.batchNumber,
       Batch_type: this.state.batchType,
-      Content: this.state.content,
+      Content: this.state.batchType,
       No_packages: this.state.noOfPackages,
       No_items: this.state.noOfItems,
       Qty: this.state.qty,
@@ -73,19 +76,33 @@ class AddBatch extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  calTot(e) {
-    const a = this.state.noOfPackages;
-    const b = this.state.noOfPackages;
-    const tot = a * b;
-    return tot;
-  }
-
-  handleChange(date) {
+  onChangeSpinnerItem(num) {
     this.setState({
-      startDate: date
+      noOfItems: num
     });
   }
- 
+  onChangeSpinnerPack(num) {
+    this.setState({
+      noOfPackages: num
+    });
+  }
+
+  handleMfg(date) {
+    this.setState({
+      mfg: date
+    });
+  }
+  handleExp(date) {
+    this.setState({
+      exp: date
+    });
+  }
+  calTot(e) {
+    const a = this.state.noOfPackages;
+    const b = this.state.noOfItems;
+    const tot = a * b;
+    this.setState({ qty: tot });
+  }
 
   //to get the drug data to fill combo
   componentDidMount() {
@@ -96,7 +113,7 @@ class AddBatch extends Component {
         this.setState({
           drugData: data
         });
-        console.log(data);
+        // console.log(data);
       })
       .catch(err => {
         console.log(err);
@@ -178,7 +195,7 @@ class AddBatch extends Component {
                   min={1}
                   max={10000}
                   value={this.state.noOfPackages}
-                  onChange={this.onChange}
+                  onChange={this.onChangeSpinnerPack}
                 />
                 <small className="form-text text-muted">
                   Number Items per pack
@@ -188,13 +205,14 @@ class AddBatch extends Component {
                   min={0}
                   max={100}
                   value={this.state.noOfItems}
-                  onChange={this.onChange}
+                  onChange={this.onChangeSpinnerItem}
                 />
 
                 <input
-                  type="submit"
-                  value="Submit"
-                  className="btn btn-info btn-block mt-2"
+                  type="calTot"
+                  value="Calculate Total"
+                  className="btn btn-primary btn-lg
+                  mt-4 "
                   onClick={this.calTot}
                 />
 
@@ -212,18 +230,18 @@ class AddBatch extends Component {
                   name="mfg"
                   selected={this.state.mfg}
                   value={this.state.mfg}
-                  onChange={this.onChange}
+                  onChange={this.handleMfg}
                   info="Mfg"
+                  dateFormat="DD-MM-YYYY"
                 />
-                <small className="form-text text-muted">
-                  Exp Date
-                </small>
+                <small className="form-text text-muted">Exp Date</small>
                 <DatePicker
                   name="exp"
                   value={this.state.exp}
                   selected={this.state.exp}
-                  onChange={this.onChange}
+                  onChange={this.handleExp}
                   info="Mfg"
+                  dateFormat="DD-MM-YYYY"
                 />
 
                 <input

@@ -1,0 +1,88 @@
+import React, { Component } from "react";
+import axios from "axios";
+
+class ViewBatch extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8080/drug/batch")
+      .then(Response => {
+        var data = Response.data.data;
+        this.setState({
+          data: data
+        });
+        console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  render() {
+    const displayBatch = this.state.data.map(item => {
+      return (
+        <tr key={item._id}>
+          <td key={item._id}>{item.Brand_name}</td>
+          <td key={item._id}>{item.Batch_number}</td>
+          <td key={item._id}>{item.Batch_type}</td>
+          <td key={item._id}>{item.Content}</td>
+          <td key={item._id}>{item.No_package}</td>
+          <td key={item._id}>{item.No_items}</td>
+          <td key={item._id}>{item.Qty}</td>
+          <td key={item._id}>{item.Mfq}</td>
+          <td key={item._id}>{item.Exp}</td>
+
+          <td>
+            <div class="btn-group">
+              <a class="btn btn-info" href="#">
+                Update
+              </a>
+              <a class="btn btn-danger" href="#">
+                Delete
+              </a>
+            </div>
+          </td>
+        </tr>
+      );
+    });
+
+    return (
+      <div className="landing-inner">
+        <div className="row">
+          <div className="col-lg-12">
+            <section className="panel">
+              <h1 className="display-4 text-left">View Batch</h1>
+
+              <table className="table table-striped table-advance table-hover">
+                <tbody>
+                  <tr>
+                    <th>Brand Name</th>
+                    <th>Batch Number</th>
+                    <th>Batch Type</th>
+                    <th>Content</th>
+                    <th>Type</th>
+                    <th>Number of packages</th>
+                    <th>Number of items</th>
+                    <th>Quantity</th>
+                    <th>Mfg</th>
+                    <th>Exp</th>
+                  </tr>
+                  {displayBatch}
+                </tbody>
+              </table>
+            </section>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default ViewBatch;
