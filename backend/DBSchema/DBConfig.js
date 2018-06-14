@@ -135,59 +135,74 @@ var Employee_duty = new schema({
   }
 });
 
-var Prescription_data = new schema({
-  Pid: {
-    type: String,
-    required: true
+var Prescription_data=new schema({
+  Pid:{
+      type:String,
+      required:true
   },
-  Patient_name: {
-    type: String,
-    required: true
+  Patient_name:{
+      type:String,
+      required:true
   },
-  Pres_Id: {
-    type: String,
-    required: true
+  Pres_Id:{
+      type:String,
+      required:true
   },
-  Create_Date: {
-    type: String,
-    required: true
+  Create_Date:{
+      type:String,
+      required:true
   },
-  Dosage: {
-    type: String,
-    required: true
+  Drug_type1:{
+      type:String,
+      required:true
   },
-  Frequency: {
-    type: String,
-    required: true
+  Drug_type2:{
+      type:String,
+      required:true
   },
-  Period: {
-    type: String,
-    required: true
-  }
-});
+  Dosage:{
+      type:String,
+      required:true
+  },
+  Frequency:{
+      type:String,
+      required:true
+  },
+  Period:{
+      type:String,
+      required:true
+  }   
+})
 
-var Issue_data = new schema({
-  Pres_Id: {
-    type: String,
-    required: true
+
+var Issue_data=new schema({
+  Pres_Id:{
+      type:String,
+      required:true
   },
-  Drug_name: {
-    type: String,
-    required: true
+  Drug_name1:{
+      type:String,
+      required:true
   },
-  Issue_Date: {
-    type: String,
-    required: true
+  Drug_name2:{
+    type:String,
+    required:true
   },
-  Quantity: {
-    type: String,
-    required: true
+  Issue_Date:{
+      type:String,
+      required:true
   },
-  unit_price: {
-    type: String,
-    required: true
-  }
-});
+  Quantity1:{
+      type:String,
+      required:true
+  },
+  Quantity2:{
+    type:String,
+    required:true
+}
+  
+})
+
 
 mongoose.model("drug", Drug);
 mongoose.model("batch", Batch);

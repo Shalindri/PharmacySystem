@@ -1,9 +1,18 @@
 import React, { Component } from "react";
+import '../../issue.css';
+import { Link } from 'react-router-dom';
 
-class Sidebar extends Component {
+
+
+class sidebar_issue extends Component {
+
+  constructor(props) {
+    super(props);
+}
+
   render() {
     return (
-      <aside>
+      <aside >
         <div id="sidebar" className="nav-collapse ">
           <ul className="sidebar-menu">
             <li className="active">
@@ -12,15 +21,15 @@ class Sidebar extends Component {
               </a>
             </li>
             <li>
-              
-              <Link to="/">Home</Link>
-                <span>Charts</span>
-              
+              <a className="nav-item" href="chart-chartjs.html">
+                <span>Issue Drugs</span>
+                
+              </a>
             </li>
             <li>
-              <a className="" href="chart-chartjs.html">
-                <span>Charts</span>
-              </a>
+            <a className="nav-item" href="chart-chartjs.html">
+                <span>View Drugs</span>
+                </a>
             </li>
             <li>
               <a className="" href="chart-chartjs.html">
@@ -39,4 +48,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default sidebar_issue;
