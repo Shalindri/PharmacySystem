@@ -64,18 +64,33 @@ class AddPayment extends Component {
   }
 
   onChange(e) {
-    
+    this.setState({[e.target.Pres_Id]:e.target.value});
+  }
+
+  onBillNoChange(e){
+    this.setState({[e.target.BillNo]:e.target.value});
   }
 
   search(e) {
+    const orderData = this.getIssuedDrugs();
+    this.state.orderData.map(item => {
+      var searchkey= new RegExp(this.state.key,"gi");
+      if(this.state.key === ""){
+        
+
+      }
+    })
+
+
+
     
   }
   
 
   
 
-  //to get the drug data to fill combo
-  componentDidMount() {
+
+  getIssuedDrugs() {
     axios
       .get("http://localhost:8080/issue")
       .then(Response => {
@@ -94,6 +109,7 @@ class AddPayment extends Component {
     const a = this.state.orderdata.map(x=>{
      var tot1=(x.Price1)*(x.Quantity1);
      var tot2=(x.Price2)*(x.Quantity2);
+     var total = tot1+tot2; 
       return(
         <tbody>
         <tr>
@@ -128,20 +144,20 @@ class AddPayment extends Component {
                     
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Prescription No: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={this.onChange}/>
                     </div>
                     <button type="submit" class="btn btn-primary"onClick={this.search()}>Search</button>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Bill No: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onBillNoChange={this.onBillNoChange}/>
                     </div>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Pay Date: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter pay date" readOnly/>
                     </div>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Total: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readOnly/>
                     </div>            
                     </fieldset>
                     
