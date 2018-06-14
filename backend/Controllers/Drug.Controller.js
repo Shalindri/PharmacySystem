@@ -67,12 +67,27 @@ var Controller = function() {
         });
     });
   };
-
   this.getBatch = function() {
     return new Promise(function(resolve, reject) {
       batchSchema
         .find()
         .exec()
+        .then(function(data) {
+          resolve({ status: 200, Batchdata: data });
+        })
+        .catch(function(err) {
+          reject({ status: 404, message: "No Batch data" });
+        });
+    });
+  };
+
+  ////get the all the drugs which will
+  //expired within 90 days
+
+  this.getDiff = function() {
+    return new Promise(function(resolve, reject) {
+      batchSchema
+        .find({ Exp: { $gte: new Date() } })
         .then(function(data) {
           resolve({ status: 200, Batchdata: data });
         })

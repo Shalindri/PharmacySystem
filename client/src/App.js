@@ -6,7 +6,7 @@ import Footer from "./components/Layout/Footer";
 //import AddDrug from "./components/drug/AddBatch";
 import Sidebar from "./components/Layout/Sidebar";
 import "./App.css";
-import AddBatch from "./components/drug/ViewBatch";
+import AddBatch from "./components/drug/AddBatch";
 
 class App extends Component {
   render() {

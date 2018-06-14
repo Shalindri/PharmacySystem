@@ -1,7 +1,9 @@
+//get the all the drugs which will expired within 90 days and set to a table
+
 import React, { Component } from "react";
 import axios from "axios";
 
-class ViewBatch extends Component {
+class ToBeExpDrug extends Component {
   constructor(props) {
     super(props);
 
@@ -84,4 +86,4 @@ class ViewBatch extends Component {
   }
 }
 
-export default ViewBatch;
+export default ToBeExpDrug;

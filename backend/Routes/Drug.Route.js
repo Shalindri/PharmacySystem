@@ -45,4 +45,14 @@ router.get("/batch", function(req, res) {
       res.status(data.status).send({ message: err.message });
     });
 });
+
+router.get("/batch", function(req, res) {
+  Controller.getDiff()
+    .then(function(data) {
+      res.status(data.status).send({ data: data.Batchdata });
+    })
+    .catch(function(err) {
+      res.status(data.status).send({ message: err.message });
+    });
+});
 module.exports = router;
