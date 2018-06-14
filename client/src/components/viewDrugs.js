@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import Navbar from "./Layout/Navbar";
 import Sidebar from "./Layout/sidebar_issue";
+import DrugStock from './drugStock';
+import axios from "axios";
+
 
 
 class viewDrugs extends Component {
-
-  constructor(props){
-    super(props);
-    this.state= {
-        results: {},
-     }
-}
-
 
   render() {
     return (
@@ -23,8 +18,11 @@ class viewDrugs extends Component {
                     <div className="col-md-3">
                     {/*binding the functions to Sidebar tag*/}
                     <Sidebar/>
+                    <div className="profile-img"><img src={require('../img/drug2.jpg')} alt=""/></div>
                     </div>
                     <div className="col-md-8">
+                    <h2>Available Drug Stock</h2><br></br>
+                    <DrugStock/>
                     
                     </div>
                     

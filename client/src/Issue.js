@@ -4,9 +4,6 @@ import SearchList from './components/presList';
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/sidebar_issue";
 
-
-
-
 class Issue extends Component {
 
   constructor(props){
@@ -40,6 +37,7 @@ class Issue extends Component {
   render() {
     return (
         <div className="Issue">
+        
          <Navbar />
             
                 <div className="row">
@@ -58,6 +56,7 @@ class Issue extends Component {
                     
                     
                 </div>
+                
             
         </div>
     );
