@@ -36,8 +36,8 @@ class search extends Component{
                         </div>
                     </div>
 
-                    <div className="col-md-10 search">
-                        <button className="btn btn-primary " onClick={this.getItem.bind(this)}>Search</button>
+                    <div className="col-md-10">
+                        <button className="btn btn-secondary" onClick={this.getItem.bind(this)}>Search</button>
                     </div>
                 </fieldset>
             </form>

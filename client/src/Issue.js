@@ -45,6 +45,7 @@ class Issue extends Component {
                     <div className="col-md-3">
                     {/*binding the functions to Sidebar tag*/}
                     <Sidebar/>
+                    <div className="profile-img"><img src={require('./img/drug1.jpg')} alt=""/></div>
                     </div>
                     <div className="col-md-8">
                     {/*binding the functions in search tag*/}

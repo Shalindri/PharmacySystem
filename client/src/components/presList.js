@@ -60,14 +60,7 @@ class presList extends Component{
         })
 
     }
-
-
-
-    
-
-    
-
-    
+ 
     render(){
         var count=0;
         if(this.props.presResults.data!==undefined){
@@ -82,9 +75,10 @@ class presList extends Component{
                     /*
                      *Displays the searched food name, price and the user can input the quantity
                      */
+                    
                     <div className="row list" key={Pid._id}>
-                        <div className="col-md-8">
-                        <div className="jumbotron">
+                        <div className="col-md-9">
+                        
                         
                         <h6>Patient ID      : {Pid.Pid}</h6>
                         <h6>Patient Name    : {Pid.Patient_name}</h6>
@@ -93,33 +87,36 @@ class presList extends Component{
                         <hr className="my-3"></hr>
                         <h6>Drugs Assigned  : 
 
-                        <ul className="list-group"><h6>
+                        <ul className="list-group"><h6><br></br>
                         <li className="list-group-item d-flex justify-content-between align-items-center">
                          {Pid.Drug_type1}
                          
                         <span><div className="inline fields">
                             
                             <input className="form-control" ref="qty1"/>
-                            <button type="button" className="btn btn-primary" onClick={this.ava.bind(this)}>Check</button></div>    
+                            <button type="button" className="btn btn-secondary" onClick={this.ava.bind(this)}>Check</button></div>    
                         </span>
                         </li>
                         <li className="list-group-item d-flex justify-content-between align-items-center">
                         {Pid.Drug_type2}
                         <span><input className="form-control" ref="qty2"/>
-                            <button type="button" className="btn btn-primary">Check</button></span>
+                            <button type="button" className="btn btn-secondary">Check</button></span>
                         </li></h6>
                         </ul>
-                        </h6>
+                        </h6></div>
+                        <div><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                         <h6>Dosage          : {Pid.Dosage}</h6>
                         <h6>Frequency       : {Pid.Frequency}</h6>
                         <h6>Period          : {Pid.Period}</h6>
-                        <hr className="my-3"></hr>
+                        <hr className="my-3"></hr><br></br>
                     
                         <div className="profile-teaser-right">
-                        <button type="button" className="btn btn-primary" onClick={()=>{this.insertDrugs()}}>Dispense</button></div>
+                        <button type="button" className="btn btn-secondary" onClick={()=>{this.insertDrugs()}}>Dispense</button></div>
+                        
                         </div>
                         </div>
-                    </div>
+                        
+                    
                 )
             })
 

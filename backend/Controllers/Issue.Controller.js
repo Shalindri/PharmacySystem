@@ -41,6 +41,18 @@ this.insert=function(data){
     })
 
 }
+
+this.getAllPres = () => {
+    return new Promise((resolve, reject) => {
+        pres_schema.find().exec().then((data) => {
+            resolve({status: 200, data: data});
+        }).catch(err => {
+            reject({status: 500, message: "Error:- " + err});
+        })
+    })
+}
+
+
 }
 
 

@@ -19,5 +19,13 @@ router.post('/',function(req,res){
     })
 });
 
+router.get('/', (req, res) => {
+    issuecontroller.getAllPres().then(data => {
+        res.status(data.status).send({data: data.data});
+    }).catch(err => {
+        res.status(err.status).send({message: err.message});
+    });
+});
+
 
 module.exports=router;
