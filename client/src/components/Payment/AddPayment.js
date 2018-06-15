@@ -20,7 +20,7 @@ class AddPayment extends Component {
     };
     
     //this.getIssuedDrugs=this.getIssuedDrugs.bind(this);
-    //this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     //this.onSubmit = this.onSubmit.bind(this);
     
   }
@@ -33,6 +33,7 @@ class AddPayment extends Component {
         Pres_Id: this.state.Pres_Id,
         PayDate: this.state.PayDate,
         Total: this.state.Total,
+        value:''
       
        
 
@@ -53,9 +54,31 @@ class AddPayment extends Component {
         console.log(err);
       });
   }
+      
+    onPresSubmit(e){
+      e.preventDefault();
+      var Total;
+      //var a = this.state.value;
+      if (this.x===1){
+        Total=15;
+        console.log("p1");
+      }
+      else{
+        Total=9;
+        console.log("p2");
+      }
+      return Total;
+
+    }
+
+
+
+
+
 
   onChange(e) {
-    this.setState({[e.target.Pres_Id]:e.target.value});
+    var x = this.setState({[e.target.Pres_Id]:e.target.value});
+    
   }
 
   onBillNoChange(e){
@@ -83,12 +106,22 @@ class AddPayment extends Component {
     
   }
 
+ 
+  
+
+ 
+
 
   render() {
     const a = this.state.orderData.map(x=>{
      var tot1=(2)*(x.Quantity1);
      var tot2=(1)*(x.Quantity2);
-     var total = tot1+tot2; 
+     console.log("total");
+     var total = tot1+tot2;
+     this.total=this.state.total;
+    
+     
+     
       return(
         <tbody>
         <tr>
@@ -122,26 +155,27 @@ class AddPayment extends Component {
               <fieldset>
                     
                     <div class="form-group row">
-                    <label for="exampleInputEmail1">Prescription No: </label>
-                    <input type="email" class="form-control" id="prescriptionNo" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
+                    <label for="prescription">Prescription No: </label>
+                    <input type="text" class="form-control" value={this.state.value}   placeholder="Enter Prescription No" onChange={this.onChange} />
                     </div>
-                
+                    <button type="submit" class="btn btn-primary" onClick={this.onPresSubmit} >Search</button>
+                   
                     <div class="form-group row">
-                    <label for="exampleInputEmail1">Bill No: </label>
-                    <input type="email" class="form-control" id="BillNo" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
-                    </div>
-                    <div class="form-group row">
-                    <label for="exampleInputEmail1">Pay Date: </label>
-                    <input type="email" class="form-control" id="Date" aria-describedby="emailHelp" placeholder="Enter pay date" readOnly/>
+                    <label for="Bill No">Bill No: </label>
+                    <input type="text" class="form-control" id="BillNo"  placeholder="Bill No" readOnly/>
                     </div>
                     <div class="form-group row">
-                    <label for="exampleInputEmail1">Total: </label>
-                    <input type="email" class="form-control" id="total" aria-describedby="emailHelp" readOnly/>
+                    <label for="date">Pay Date: </label>
+                    <input type="text" class="form-control" id="Date"  placeholder="Pay Date" readOnly/>
+                    </div>
+                    <div class="form-group row">
+                    <label for="total">Total: </label>
+                    <input type="text" class="form-control" value={this.state.total}  readOnly/>
                     </div>            
                     </fieldset>
                     
                    <br/>
-                    <button type="submit" class="btn btn-primary">Make Payment</button>
+                    
                 
               </form>
 
