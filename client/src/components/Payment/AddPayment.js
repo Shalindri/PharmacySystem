@@ -1,7 +1,5 @@
 
 import React, { Component } from "react";
-
-
 import axios from "axios";
 
 class AddPayment extends Component {
@@ -14,21 +12,14 @@ class AddPayment extends Component {
         Total:"",
         tot1:"",
         tot2:"",
-        orderdata:[{
-          "Pres_Id":"1",
-          "Drug_name1":"panadol",
-          "Drug_name2":"piriton",
-          "Quantity1":"9",
-          "Quantity2":"3",
-          "Price1":"2",
-          "Price2":"1"
+        orderData:[]
 
-        }]
+        
 
      
     };
     
-
+    //this.getIssuedDrugs=this.getIssuedDrugs.bind(this);
     //this.onChange = this.onChange.bind(this);
     //this.onSubmit = this.onSubmit.bind(this);
     
@@ -71,30 +62,13 @@ class AddPayment extends Component {
     this.setState({[e.target.BillNo]:e.target.value});
   }
 
-  search(e) {
-    const orderData = this.getIssuedDrugs();
-    this.state.orderData.map(item => {
-      var searchkey= new RegExp(this.state.key,"gi");
-      if(this.state.key === ""){
-        
-
-      }
-    })
-
-
-
-    
-  }
-  
-
-  
-
-
-  getIssuedDrugs() {
+  //to load the table
+  componentDidMount() {
     axios
       .get("http://localhost:8080/issue")
       .then(Response => {
         var data = Response.data.data;
+        console.log("table");
         this.setState({
           orderData: data
         });
@@ -105,27 +79,32 @@ class AddPayment extends Component {
       });
   }
 
+  autoIncrement(){
+    
+  }
+
+
   render() {
-    const a = this.state.orderdata.map(x=>{
-     var tot1=(x.Price1)*(x.Quantity1);
-     var tot2=(x.Price2)*(x.Quantity2);
+    const a = this.state.orderData.map(x=>{
+     var tot1=(2)*(x.Quantity1);
+     var tot2=(1)*(x.Quantity2);
      var total = tot1+tot2; 
       return(
         <tbody>
         <tr>
   
+        <td>{x.Pres_Id}</td>
         <td>{x.Drug_name1}</td>
         <td>{x.Quantity1}</td>
-        <td>{x.Price1}</td>
-        <td value={tot1}>{tot1}</td>
-        
+        <td>2</td>
+        <td>{tot1}</td>
         </tr>
         <tr>
-  
+        <td>{x.Pres_Id}</td>
         <td>{x.Drug_name2}</td>
         <td>{x.Quantity2}</td>
-        <td>{x.Price2}</td>
-        <td value={tot2}>{tot2}</td>
+        <td>1</td>
+        <td>{tot2}</td>
         
         </tr>
         </tbody>
@@ -144,20 +123,20 @@ class AddPayment extends Component {
                     
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Prescription No: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={this.onChange}/>
+                    <input type="email" class="form-control" id="prescriptionNo" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
                     </div>
-                    <button type="submit" class="btn btn-primary"onClick={this.search()}>Search</button>
+                
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Bill No: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onBillNoChange={this.onBillNoChange}/>
+                    <input type="email" class="form-control" id="BillNo" aria-describedby="emailHelp" placeholder="Enter email" readOnly/>
                     </div>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Pay Date: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter pay date" readOnly/>
+                    <input type="email" class="form-control" id="Date" aria-describedby="emailHelp" placeholder="Enter pay date" readOnly/>
                     </div>
                     <div class="form-group row">
                     <label for="exampleInputEmail1">Total: </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" readOnly/>
+                    <input type="email" class="form-control" id="total" aria-describedby="emailHelp" readOnly/>
                     </div>            
                     </fieldset>
                     
@@ -171,6 +150,7 @@ class AddPayment extends Component {
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                        <th scope="col">Prescription No</th>
                         <th scope="col">Drug Name</th>
                         <th scope="col">Quantity</th>
                         <th scope="col">Unit Price</th>
