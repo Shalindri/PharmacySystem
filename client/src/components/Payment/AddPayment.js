@@ -38,9 +38,9 @@ class AddPayment extends Component {
     
 
     axios
-      .post("http://localhost:8080/drug/batch", paymentData)
+      .post("http://localhost:8080/payment", paymentData)
       .then(res => {
-        console.log(batchData);
+        console.log(paymentData);
 
         this.setState({
 
