@@ -65,7 +65,7 @@ class AddBatch extends Component {
           noOfItems: "",
           qty: "",
           mfg: "",
-          exp: ""
+          exp: "",
          
         });
       })
