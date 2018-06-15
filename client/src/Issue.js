@@ -3,6 +3,7 @@ import Search from './components/search';
 import SearchList from './components/presList';
 import Navbar from "./components/Layout/Navbar";
 import Sidebar from "./components/Layout/sidebar_issue";
+import Footer from "./components/Layout/Footer";
 
 class Issue extends Component {
 
@@ -58,7 +59,7 @@ class Issue extends Component {
                     
                 </div>
                 
-            
+            <Footer/>
         </div>
     );
 

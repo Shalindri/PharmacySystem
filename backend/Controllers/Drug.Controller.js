@@ -5,11 +5,11 @@ var drug_schema=mongoose.model('batch');
 
 var DrugController=function(){
 
-this.checkDrug = (Drug) => {
+this.checkDrug = (Brand_name) => {
     return new Promise((resolve, reject) => {
-        console.log(Drug);
-        var Drug_name = new RegExp(["^", Drug, "$"].join(""), "i");
-        drug_schema.find({Drug:Drug_name}).then((data) => {
+        console.log(Brand_name);
+        var Drug_name = new RegExp(["^", Brand_name, "$"].join(""), "i");
+        drug_schema.find({Brand_name:Drug_name}).then((data) => {
             resolve({status: 200, data: data});
         }).catch(err => {
             reject({status: 500, message: "Error:- " + err});
@@ -22,9 +22,9 @@ this.checkDrug = (Drug) => {
 this.insertBatch=function(data){
     return new Promise(function(resolve,reject){
         var Drugs=drug_schema({
-            Drug:data.Drug,
+            Brand_name:data.Brand_name,
             Exp:data.Exp,
-            Md:data.Md,
+            Mfg:data.Mfg,
             Qty:data.Qty
             
         })
@@ -38,9 +38,9 @@ this.insertBatch=function(data){
 }
 
 
-this.updateBatch = (Drug, data) => {
+this.updateBatch = (Brand_name, data) => {
     return new Promise(function (resolve, reject) {
-        drug_schema.update({Drug:Drug},data).then(function(){
+        drug_schema.update({Brand_name:Brand_name},data).then(function(){
             resolve({status:200,message:"Updated Batch successfully"});
         }).catch(function(err){
             reject({status:404,message:"Error "+err})

@@ -30,9 +30,9 @@ class drugStock extends Component {
     const displayBatch = this.state.data.map(item => {
       return (
         <tr key={item._id}>
-          <td key={item._id}>{item.Drug}</td>
+          <td key={item._id}>{item.Brand_name}</td>
           <td key={item._id}>{item.Exp}</td> 
-          <td key={item._id}>{item.Md}</td>
+          <td key={item._id}>{item.Mfg}</td>
           <td key={item._id}>{item.Qty}</td>
         </tr>
       );

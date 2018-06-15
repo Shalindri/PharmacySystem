@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import '../../issue.css';
-import {Link} from 'react-router-dom';
-
+//import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+//import View from '../viewDrugs';
+import ReactDOM from 'react-dom';
 
 
 class sidebar_issue extends Component {
@@ -10,8 +11,10 @@ class sidebar_issue extends Component {
     super(props);
 }
 
+
   render() {
     return (
+      
       <aside >
         <div id="sidebar" className="nav-collapse ">
           <ul className="sidebar-menu">
@@ -28,7 +31,8 @@ class sidebar_issue extends Component {
             </li>
             <li>
             <a className="nav-item" href="chart-chartjs.html">
-                <span>View Drugs</span>
+                <span>View Drugs
+                </span>
                 </a>
             </li>
             <li>
@@ -42,8 +46,9 @@ class sidebar_issue extends Component {
               </a>
             </li>
           </ul>
-        </div>
+           </div>
       </aside>
+      
     );
   }
 }

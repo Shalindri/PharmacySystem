@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from "./Layout/Navbar";
 import Sidebar from "./Layout/sidebar_issue";
+import Footer from "./Layout/Footer";
 import DrugStock from './drugStock';
 import axios from "axios";
 
@@ -28,6 +29,7 @@ class viewDrugs extends Component {
                     
                     
                 </div>
+                <Footer/>
             
         </div>
     );
