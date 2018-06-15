@@ -2,6 +2,7 @@
 
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "moment";
 
 class ToBeExpDrug extends Component {
   constructor(props) {
@@ -10,11 +11,13 @@ class ToBeExpDrug extends Component {
     this.state = {
       data: []
     };
+    this.getExpdata = this.getExpdata.bind(this);
+    this.getExpdata = this.getExpdata.bind(this);
   }
 
-  componentDidMount() {
+  getExpData() {
     axios
-      .get("http://localhost:8080/drug/batch")
+      .get("http://localhost:8080/drug/batch?Date=" + moment())
       .then(Response => {
         var data = Response.data.data;
         this.setState({
@@ -30,28 +33,46 @@ class ToBeExpDrug extends Component {
   render() {
     const displayBatch = this.state.data.map(item => {
       return (
-        <tr key={item._id}>
-          <td key={item._id}>{item.Brand_name}</td>
-          <td key={item._id}>{item.Batch_number}</td>
-          <td key={item._id}>{item.Batch_type}</td>
-          <td key={item._id}>{item.Content}</td>
-          <td key={item._id}>{item.No_package}</td>
-          <td key={item._id}>{item.No_items}</td>
-          <td key={item._id}>{item.Qty}</td>
-          <td key={item._id}>{item.Mfq}</td>
-          <td key={item._id}>{item.Exp}</td>
+        <table className="table table-striped table-advance table-hover">
+          <tbody>
+            <tr>
+              <th>Brand Name</th>
+              <th>Batch Number</th>
+              <th>Batch Type</th>
+              <th>Content</th>
+              <th>Number of packages</th>
+              <th>Number of items</th>
+              <th>Quantity</th>
+              <th>Mfg</th>
+              <th>Exp</th>
+            </tr>
+            <tr key={item._id}>
+              <td key={item._id}>{item.Brand_name}</td>
+              <td key={item._id}>{item.Batch_number}</td>
+              <td key={item._id}>{item.Batch_type}</td>
+              <td key={item._id}>{item.Content}</td>
+              <td key={item._id}>{item.No_package}</td>
+              <td key={item._id}>{item.No_items}</td>
+              <td key={item._id}>{item.Qty}</td>
+              <td key={item._id}>{item.Mfq}</td>
+              <td key={item._id}>{item.Exp}</td>
 
-          <td>
-            <div class="btn-group">
-              <a class="btn btn-info" href="#">
-                Update
-              </a>
-              <a class="btn btn-danger" href="#">
-                Delete
-              </a>
-            </div>
-          </td>
-        </tr>
+              <td>
+                <div class="btn-group">
+                  <a class="btn btn-info" href="#">
+                    Update
+                  </a>
+                  <a class="btn btn-danger" href="#">
+                    Delete
+                  </a>
+                  <a class="btn btn-info" href="#">
+                    Return
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       );
     });
 

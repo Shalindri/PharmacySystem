@@ -67,6 +67,7 @@ var Controller = function() {
         });
     });
   };
+
   this.getBatch = function() {
     return new Promise(function(resolve, reject) {
       batchSchema
@@ -81,18 +82,51 @@ var Controller = function() {
     });
   };
 
-  ////get the all the drugs which will
-  //expired within 90 days
+  ////get the all the drugs which are
+  //expired
 
-  this.getDiff = function() {
+  this.getDiff = function(d) {
+    console.log("inside in ***!! new controller Date:" + d);
+
+    console.log("formated Date:" + d);
     return new Promise(function(resolve, reject) {
       batchSchema
-        .find({ Exp: { $gte: new Date() } })
+        .find({
+          Exp: {
+            $lt: d
+          }
+        })
         .then(function(data) {
-          resolve({ status: 200, Batchdata: data });
+          resolve({ status: 200, filterdata: data });
         })
         .catch(function(err) {
-          reject({ status: 404, message: "No Batch data" });
+          reject({ status: 404, message: "No Filter Batch data" });
+        });
+    });
+  };
+
+  this.updateDrug = function(bname, drugDetails) {
+    return new Promise(function(resolve, reject) {
+      drugSchema
+        .update({ Brand_name: bname }, drugDetails)
+        .then(function(data) {
+          resolve({ status: 200, message: "Drug updated" });
+        })
+        .catch(function(reason) {
+          reject({ status: 500, message: "Error occured" + reason });
+        });
+    });
+  };
+
+  this.deleteDrug = function(brandName) {
+    return new Promise(function(resolve, reject) {
+      drugSchema
+        .remove({ Brand_name: brandName })
+        .then(function() {
+          resolve({ status: 200, message: "Drug deleted" });
+        })
+        .catch(function(reason) {
+          reject({ status: 500, message: "Error occured" + reason });
         });
     });
   };

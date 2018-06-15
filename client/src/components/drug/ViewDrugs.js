@@ -6,11 +6,18 @@ class ViewDrugs extends Component {
     super(props);
 
     this.state = {
+      
       data: []
     };
-
-    // this.tableLoad = this.tableLoad.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    
   }
+
+ // onDelete(e) {
+  //  this.setState(
+   //   this.
+   // );
+  //}
 
   componentDidMount() {
     axios
@@ -21,6 +28,18 @@ class ViewDrugs extends Component {
           data: data
         });
         console.log(data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  onDelete(e) {
+    axios
+      .delete("http://localhost:8080/drug/drugs/" + e)
+      .then(res => {
+        alert("Drug deleted");
+        // console.log(drugData);
       })
       .catch(err => {
         console.log(err);
@@ -42,11 +61,14 @@ class ViewDrugs extends Component {
           <td key={item._id}>{item.Reorder_level}</td>
           <td key={item._id}>{item.Supplier}</td>
           <td>
-            <div class="btn-group">
-              <a class="btn btn-info" href="#">
-                Update
-              </a>
-              <a class="btn btn-danger" href="#">
+            <div className="btn-group">
+              <a className="btn btn-info">Update</a>
+              <a
+                id={item._id}
+                value={item._id}
+                className="btn btn-danger"
+                onClick={this.onDelete}
+              >
                 Delete
               </a>
             </div>
@@ -87,5 +109,4 @@ class ViewDrugs extends Component {
     );
   }
 }
-
 export default ViewDrugs;

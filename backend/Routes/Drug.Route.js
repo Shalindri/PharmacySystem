@@ -37,22 +37,44 @@ router.post("/batch", function(req, res) {
 });
 
 router.get("/batch", function(req, res) {
-  Controller.getBatch()
+  if (req.query.d) {
+    console.log("inside in the exp query" + req.query.d);
+    Controller.getDiff(req.query.d)
+      .then(function(data) {
+        res.status(data.status).send({ data: data.filterdata });
+      })
+      .catch(function(err) {
+        res.status(data.status).send({ message: err.message });
+      });
+  } else {
+    Controller.getBatch()
+      .then(function(data) {
+        res.status(data.status).send({ data: data.Batchdata });
+      })
+      .catch(function(err) {
+        res.status(data.status).send({ message: err.message });
+      });
+  }
+});
+
+router.put("/drugs/:Brand_name", function(req, res) {
+  Controller.updateDrug(req.params.Brand_name, req.body)
     .then(function(data) {
-      res.status(data.status).send({ data: data.Batchdata });
+      res.status(data.status).send(data.message);
     })
     .catch(function(err) {
-      res.status(data.status).send({ message: err.message });
+      res.status(err.status).send(err.message);
     });
 });
 
-router.get("/batch", function(req, res) {
-  Controller.getDiff()
+router.delete("/drugs/:Brand_name", function(req, res) {
+  Controller.deleteDrug(req.params.Brand_name)
     .then(function(data) {
-      res.status(data.status).send({ data: data.Batchdata });
+      res.status(data.status).send(data.message);
     })
     .catch(function(err) {
-      res.status(data.status).send({ message: err.message });
+      res.status(err.status).send(err.message);
     });
 });
+
 module.exports = router;

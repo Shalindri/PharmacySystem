@@ -66,6 +66,7 @@ class AddBatch extends Component {
           qty: "",
           mfg: "",
           exp: ""
+         
         });
       })
       .catch(err => {
