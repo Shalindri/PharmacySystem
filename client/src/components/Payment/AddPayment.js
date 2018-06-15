@@ -29,20 +29,16 @@ class AddPayment extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const batchData = {
+    const paymentData = {
        BillNo: this.state.BillNo,
         Pres_Id: this.state.Pres_Id,
         PayDate: this.state.PayDate,
-        Total: this.state.Total,
-        
-      
-       
-
+        Total: this.state.Total
     };
     
 
     axios
-      .post("http://localhost:8080/drug/batch", batchData)
+      .post("http://localhost:8080/drug/batch", paymentData)
       .then(res => {
         console.log(batchData);
 
