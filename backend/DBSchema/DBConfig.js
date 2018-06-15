@@ -2,9 +2,10 @@ const mongoose = require("mongoose");
 var schema = mongoose.Schema;
 
 var Drug = new schema({
-  Id: {
-    type: String
-  },
+  //Id: {
+  //type: String,
+  // required: true
+  //},
   Brand_name: {
     type: String,
     required: true
@@ -17,8 +18,11 @@ var Drug = new schema({
     type: String,
     required: true
   },
-
   Category: {
+    type: String,
+    required: true
+  },
+  Type: {
     type: String,
     required: true
   },
@@ -30,11 +34,11 @@ var Drug = new schema({
     type: Number,
     required: true
   },
-  Danger_Level: {
+  Danger_level: {
     type: Number,
     required: true
   },
-  Reorder_Level: {
+  Reorder_level: {
     type: Number,
     required: true
   },
@@ -45,7 +49,35 @@ var Drug = new schema({
 });
 
 var Batch = new schema({
-  Drug: {
+  Brand_name: {
+    type: String,
+    required: true
+  },
+  Batch_number: {
+    type: String,
+    required: true
+  },
+  Batch_type: {
+    type: String,
+    required: true
+  },
+  Content: {
+    type: String,
+    required: true
+  },
+  No_packages: {
+    type: Number,
+    required: true
+  },
+  No_items: {
+    type: Number,
+    required: true
+  },
+  Qty: {
+    type: Number,
+    required: true
+  },
+  Mfg: {
     type: String,
     required: true
   },
@@ -53,15 +85,12 @@ var Batch = new schema({
     type: String,
     required: true
   },
-  Md: {
-    type: String,
-    required: true
-  },
-  Qty: {
+  Supplier: {
     type: String,
     required: true
   }
 });
+
 
 var Order = new schema({
   Order_Id: {
