@@ -95,7 +95,7 @@ class AddPayment extends Component {
     const a = this.state.orderData.map(x=>{
      var tot1=(2)*(x.Quantity1);
      var tot2=(1)*(x.Quantity2);
-     console.log("total");
+     
      this.state.total=tot1+tot2;
      
      
