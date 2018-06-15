@@ -9,10 +9,11 @@ class AddPayment extends Component {
         BillNo: "",
         Pres_Id:"",
         PayDate:"",
-        Total:"",
+        total:"",
         tot1:"",
         tot2:"",
-        orderData:[]
+        orderData:[],
+        date:(new Date().getFullYear())+'/'+(new Date().getMonth())+'/'+(new Date().getDate())
 
         
 
@@ -33,7 +34,7 @@ class AddPayment extends Component {
         Pres_Id: this.state.Pres_Id,
         PayDate: this.state.PayDate,
         Total: this.state.Total,
-        value:''
+        
       
        
 
@@ -55,22 +56,7 @@ class AddPayment extends Component {
       });
   }
       
-    onPresSubmit(e){
-      e.preventDefault();
-      var Total;
-      //var a = this.state.value;
-      if (this.x===1){
-        Total=15;
-        console.log("p1");
-      }
-      else{
-        Total=9;
-        console.log("p2");
-      }
-      return Total;
-
-    }
-
+    
 
 
 
@@ -102,14 +88,7 @@ class AddPayment extends Component {
       });
   }
 
-  autoIncrement(){
-    
-  }
-
- 
   
-
- 
 
 
   render() {
@@ -117,9 +96,7 @@ class AddPayment extends Component {
      var tot1=(2)*(x.Quantity1);
      var tot2=(1)*(x.Quantity2);
      console.log("total");
-     var total = tot1+tot2;
-     this.total=this.state.total;
-    
+     this.state.total=tot1+tot2;
      
      
       return(
@@ -156,22 +133,26 @@ class AddPayment extends Component {
                     
                     <div class="form-group row">
                     <label for="prescription">Prescription No: </label>
-                    <input type="text" class="form-control" value={this.state.value}   placeholder="Enter Prescription No" onChange={this.onChange} />
+                    <input type="text" class="form-control"   placeholder="Enter Prescription No" onChange={this.onChange} />
                     </div>
-                    <button type="submit" class="btn btn-primary" onClick={this.onPresSubmit} >Search</button>
+                    
                    
                     <div class="form-group row">
                     <label for="Bill No">Bill No: </label>
-                    <input type="text" class="form-control" id="BillNo"  placeholder="Bill No" readOnly/>
+                    <input type="text" class="form-control" id="BillNo"  placeholder="Bill No" />
+
                     </div>
                     <div class="form-group row">
                     <label for="date">Pay Date: </label>
-                    <input type="text" class="form-control" id="Date"  placeholder="Pay Date" readOnly/>
+                    <input type="text" class="form-control" id="Date"  value={(new Date().getFullYear())+'/'+(new Date().getMonth())+'/'+(new Date().getDate())} readOnly/>
+                    
                     </div>
                     <div class="form-group row">
                     <label for="total">Total: </label>
-                    <input type="text" class="form-control" value={this.state.total}  readOnly/>
+                    <input type="text" class="form-control" value={this.state.total}   readOnly/>
+                    
                     </div>            
+                    <button type="submit" class="btn btn-primary" onClick={this.onPresSubmit} >Make Payment</button>
                     </fieldset>
                     
                    <br/>
