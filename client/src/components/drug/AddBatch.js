@@ -19,6 +19,7 @@ class AddBatch extends Component {
       noOfPackages: "",
       noOfItems: "",
       qty: "",
+
       mfg: moment(),
       exp: moment(),
       drugData: []
@@ -48,13 +49,15 @@ class AddBatch extends Component {
       Qty: this.state.qty,
       Mfg: this.state.mfg,
       Exp: this.state.exp
+    
     };
     // Add drug
-
+    console.log("sss"+batchData);
     axios
       .post("http://localhost:8080/drug/batch", batchData)
       .then(res => {
         console.log(batchData);
+        alert("batch Added");
 
         this.setState({
           brandName: "",

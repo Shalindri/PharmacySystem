@@ -84,13 +84,9 @@ var Batch = new schema({
   Exp: {
     type: String,
     required: true
-  },
-  Supplier: {
-    type: String,
-    required: true
   }
+  
 });
-
 
 var Order = new schema({
   Order_Id: {
@@ -112,39 +108,39 @@ var Order = new schema({
 });
 
 var Employee = new schema({
-  Emp_Id:{
-    type:String,
-    required:true
-},
-Type:{
-    type:String,
-    required:true
-},
-Emp_name:{
-    type:String,
-    required:true
-},
+  Emp_Id: {
+    type: String,
+    required: true
+  },
+  Type: {
+    type: String,
+    required: true
+  },
+  Emp_name: {
+    type: String,
+    required: true
+  },
 
-Email:{
-    type:String,
-    required:true
-},
-Password:{
-    type:String,
-    required:true
-},
-Address:{
-    type:String,
-    required:true
-},
-Telephone:{
-    type:String,
-    required:true
-},
-Date:{
-    type:String,
-    required:true
-}
+  Email: {
+    type: String,
+    required: true
+  },
+  Password: {
+    type: String,
+    required: true
+  },
+  Address: {
+    type: String,
+    required: true
+  },
+  Telephone: {
+    type: String,
+    required: true
+  },
+  Date: {
+    type: String,
+    required: true
+  }
 });
 
 var Employee_salary = new schema({
@@ -185,89 +181,110 @@ var Employee_duty = new schema({
   }
 });
 
-var Prescription_data=new schema({
-  Pid:{
-      type:String,
-      required:true
+var Prescription_data = new schema({
+  Pid: {
+    type: String,
+    required: true
   },
-  Patient_name:{
-      type:String,
-      required:true
+  Patient_name: {
+    type: String,
+    required: true
   },
-  Pres_Id:{
-      type:String,
-      required:true
+  Pres_Id: {
+    type: String,
+    required: true
   },
-  Create_Date:{
-      type:String,
-      required:true
+  Create_Date: {
+    type: String,
+    required: true
   },
-  Drug_type1:{
-      type:String,
-      required:true
+  Drug_type1: {
+    type: String,
+    required: true
   },
-  Drug_type2:{
-      type:String,
-      required:true
+  Drug_type2: {
+    type: String,
+    required: true
   },
-  Dosage:{
-      type:String,
-      required:true
+  Dosage: {
+    type: String,
+    required: true
   },
-  Frequency:{
-      type:String,
-      required:true
+  Frequency: {
+    type: String,
+    required: true
   },
-  Period:{
-      type:String,
-      required:true
- }
+  Period: {
+    type: String,
+    required: true
+  }
 });
 
-var Issue_data=new schema({
-  Pres_Id:{
-      type:String,
-      required:true
+var Issue_data = new schema({
+  Pres_Id: {
+    type: String,
+    required: true
   },
-  Drug_name1:{
-      type:String,
-      required:true
+  Drug_name1: {
+    type: String,
+    required: true
   },
-  Drug_name2:{
-    type:String,
-    required:true
+  Drug_name2: {
+    type: String,
+    required: true
   },
-  Issue_Date:{
-      type:String,
-      required:true
+  Issue_Date: {
+    type: String,
+    required: true
   },
-  Quantity1:{
-      type:String,
-      required:true
+  Quantity1: {
+    type: String,
+    required: true
   },
-  Quantity2:{
-    type:String,
-    required:true
- }
+  Quantity2: {
+    type: String,
+    required: true
+  }
 });
 var Payment_data = new schema({
   BillNo: {
     type: String,
     required: true
   },
-  Pres_Id:{
+  Pres_Id: {
     type: String,
     required: true
   },
-  PayDate:{
+  PayDate: {
     type: String,
     required: true
   },
-  Total:{
+  Total: {
     type: String,
     required: true
   }
 });
+
+var Supplier = new schema({
+  Supplier: {
+    type: String,
+    required: true
+  },
+  Email: {
+    type: String,
+    required: true
+  },
+  Address: {
+    type: String,
+    required: true
+  },
+  Tel: {
+    type: String,
+    required: true
+  }
+});
+
+
 mongoose.model("payment_data", Payment_data);
 mongoose.model("drug", Drug);
 mongoose.model("batch", Batch);
@@ -277,7 +294,7 @@ mongoose.model("duty", Employee_duty);
 mongoose.model("emp_salary", Employee_salary);
 mongoose.model("pres_data", Prescription_data);
 mongoose.model("issue_data", Issue_data);
-
+mongoose.model("sup", Supplier);
 
 mongoose.connect(
   "mongodb://127.0.0.1:27017/pharmacy",

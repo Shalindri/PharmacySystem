@@ -29,6 +29,7 @@ router.get("/drugs", function(req, res) {
 router.post("/batch", function(req, res) {
   Controller.addBatch(req.body)
     .then(function(data) {
+      
       res.status(data.status).send({ message: data.message });
     })
     .catch(function(err) {
@@ -56,7 +57,7 @@ router.get("/batch", function(req, res) {
       });
   }
 });
-
+//update Drug
 router.put("/drugs/:Brand_name", function(req, res) {
   Controller.updateDrug(req.params.Brand_name, req.body)
     .then(function(data) {
@@ -74,6 +75,18 @@ router.delete("/drugs/:Brand_name", function(req, res) {
     })
     .catch(function(err) {
       res.status(err.status).send(err.message);
+    });
+});
+
+
+//Add Supplier
+router.post("/supplier", function(req, res) {
+  Controller.addSup(req.body)
+    .then(function(data) {
+      res.status(data.status).send({ message: data.message });
+    })
+    .catch(function(err) {
+      res.status(err.status).send({ message: err.message });
     });
 });
 

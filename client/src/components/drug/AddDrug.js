@@ -17,11 +17,29 @@ class addDrug extends Component {
       sellingPrice: "",
       dangerLevel: "",
       reorderLevel: "",
-      supplier: ""
+      supplier: "",
+
+      supName: "",
+      email: "",
+      address: "",
+      tele: "",
+
+      displayAddSupForm: false
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmitSup = this.onSubmitSup.bind(this);
+    this.addSup = this.addSup.bind(this);
+    this.asignTo = this.asignTo.bind(this);
+  }
+  asignTo(e) {
+    e.preventDefault();
+    console.log("inside in the asignTo" + this.displayAddSupForm);
+    this.setState({
+      displayAddSupForm: 1
+    });
+    console.log("inside in the asignTo" + this.displayAddSupForm);
   }
 
   onSubmit(e) {
@@ -55,16 +73,102 @@ class addDrug extends Component {
           sellingPrice: "",
           dangerLevel: "",
           reorderLevel: "",
-          supplier: ""
+          supplier: "",
+
+          supName: "",
+          email: "",
+          address: "",
+          tele: ""
+
+          //displayAddSupForm: false
         });
+        alert("New Drug Added");
       })
       .catch(err => {
+        alert("Please Enter details before submitting");
         console.log(err);
       });
   }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  //when Supplier is not exist
+  onSubmitSup(e) {
+    e.preventDefault();
+
+    const supData = {
+      Supplier: this.state.supName,
+      Email: this.state.email,
+      Address: this.state.address,
+      Tel: this.state.tele
+    };
+    // Add Sup
+
+    axios
+      .post("http://localhost:8080/drug/supplier", supData)
+      .then(res => {
+        console.log(supData);
+        this.setState({ supplier: this.state.supName });
+        alert("A new supplier added ");
+        this.setState({
+          supName: "",
+          email: "",
+          address: "",
+          tele: "",
+
+          displayAddSupForm: false
+        });
+      })
+      .catch(err => {
+        alert("Please enter supplier details");
+        console.log(err);
+      });
+  }
+
+  addSup() {
+    return (
+      <div className="post-form mb-3">
+        <div className="card card-info">
+          <div className="card-header bg-info text-white">Add Suppllier</div>
+          <div className="card-body">
+            <form onSubmit={this.onSubmitSup}>
+              <div className="form-group">
+                <FormatedTextField
+                  placeholder="Supplier Name"
+                  name="supName"
+                  value={this.state.supName}
+                  onChange={this.onChange}
+                />
+                <FormatedTextField
+                  placeholder="E-mail"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                />
+                <FormatedTextField
+                  placeholder="Address"
+                  name="address"
+                  value={this.state.address}
+                  onChange={this.onChange}
+                />
+                <FormatedTextField
+                  placeholder="Contact No"
+                  name="tele"
+                  value={this.state.tele}
+                  onChange={this.onChange}
+                />
+              </div>
+
+              <button type="submit" className="btn btn-dark">
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -91,6 +195,13 @@ class addDrug extends Component {
       { label: "Syrup", value: "Syrup" },
       { label: "Other", value: "Other" }
     ];
+
+    var supForm;
+    // if (this.displayAddSupForm) {
+    ///  console.log("sup form*******");
+    supForm = this.addSup();
+    // return supForm;
+    // }
 
     return (
       <div className="landing-inner">
@@ -173,6 +284,7 @@ class addDrug extends Component {
                   onChange={this.onChange}
                   info="Supplier"
                 />
+                {supForm}
 
                 <input
                   type="submit"

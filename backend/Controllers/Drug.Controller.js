@@ -1,6 +1,7 @@
 var mongoose = require("../DBSchema/DBConfig");
 var drugSchema = mongoose.model("drug");
 var batchSchema = mongoose.model("batch");
+var supSchema = mongoose.model("sup");
 
 var Controller = function() {
   this.addDrug = function(data) {
@@ -86,14 +87,14 @@ var Controller = function() {
   //expired
 
   this.getDiff = function(d) {
-    console.log("inside in ***!! new controller Date:" + d);
+    console.log("inside in ***!! new controller Date:");
 
-    console.log("formated Date:" + d);
+    console.log("formated Date:");
     return new Promise(function(resolve, reject) {
       batchSchema
         .find({
           Exp: {
-            $lt: d
+            $lt: Mfg
           }
         })
         .then(function(data) {
@@ -118,15 +119,37 @@ var Controller = function() {
     });
   };
 
-  this.deleteDrug = function(brandName) {
+  this.deleteDrug = function(_id) {
     return new Promise(function(resolve, reject) {
       drugSchema
-        .remove({ Brand_name: brandName })
+        .remove({ _id: _id })
         .then(function() {
           resolve({ status: 200, message: "Drug deleted" });
         })
         .catch(function(reason) {
           reject({ status: 500, message: "Error occured" + reason });
+        });
+    });
+  };
+
+  //Supplier Controller
+
+  this.addSup = function(data) {
+    return new Promise(function(resolve, reject) {
+      var sup = new supSchema({
+        Supplier: data.Supplier,
+        Email: data.Email,
+        Address: data.Address,
+        Tel: data.Tel
+      });
+
+      sup
+        .save()
+        .then(function() {
+          resolve({ status: 200, message: "A new Sup added " });
+        })
+        .catch(function(err) {
+          reject({ status: 500, message: "Error: " + err });
         });
     });
   };

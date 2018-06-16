@@ -11,8 +11,26 @@ class ViewBatch extends Component {
       expdata: []
     };
     this.onClickExp = this.onClickExp.bind(this);
+    this.sendEmail = this.sendEmail.bind(this);
+   // this.getVal = this.getVal.bind(this);
   }
+
+ 
 //check this
+sendEmail(e) {
+  alert("Email sent to supplier"+e.target.id)
+  
+  axios
+    .get("http://localhost:8080/drug/id?="+e.target.id )
+    .then(Response => {
+      
+      alert("Email is sent to supplier"+e.target.id)
+    })
+    .catch(err => {
+      console.log("cannot set data");
+      alert("supplier cannot be notified via email")
+    });
+}
   onClickExp(e) {
     Date.prototype.addDays = function(days) {
       var dat = new Date(this.valueOf());
@@ -68,11 +86,9 @@ class ViewBatch extends Component {
           <td key={item._id}>{item.Mfg}</td>
           <td key={item._id}>{item.Exp}</td>
           <td>
-            <div class="btn-group">
-              <a class="btn btn-info" href="#">
-                Update
-              </a>
-              <a class="btn btn-danger" href="#">
+            <div className="btn-group">
+              
+              <a className="btn btn-danger" >
                 Delete
               </a>
             </div>
@@ -98,14 +114,16 @@ class ViewBatch extends Component {
 
           <td>
             <div class="btn-group">
-              <a class="btn btn-info" href="#">
-                Update
-              </a>
-              <a class="btn btn-danger" href="#">
+              
+              <a class="btn btn-danger" >
                 Delete
               </a>
-              <a class="btn btn-info" href="#">
-                Return
+              <a class="btn btn-info"
+                id={item._id}
+                value={item._id}
+                className="btn btn-danger"
+                onClick={this.sendEmail} >
+               Send Return Req
               </a>
             </div>
           </td>
@@ -138,7 +156,7 @@ class ViewBatch extends Component {
                 </tbody>
               </table>
               <a class="btn btn-danger" onClick={this.onClickExp}>
-                Drugs Expire in 90 days
+                Expired Drugs
               </a>
               <table className="table table-striped table-advance table-hover">
                 <tbody>

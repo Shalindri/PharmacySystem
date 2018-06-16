@@ -6,17 +6,15 @@ class ViewDrugs extends Component {
     super(props);
 
     this.state = {
-      
       data: []
     };
     this.onDelete = this.onDelete.bind(this);
-    
   }
 
- // onDelete(e) {
+  // onDelete(e) {
   //  this.setState(
-   //   this.
-   // );
+  //   this.
+  // );
   //}
 
   componentDidMount() {
@@ -36,9 +34,9 @@ class ViewDrugs extends Component {
 
   onDelete(e) {
     axios
-      .delete("http://localhost:8080/drug/drugs/" + e)
+      .delete("http://localhost:8080/drug/drugs/" + e.target.id)
       .then(res => {
-        alert("Drug deleted");
+        alert("Drug deleted" + res.data.status);
         // console.log(drugData);
       })
       .catch(err => {
